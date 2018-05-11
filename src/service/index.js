@@ -21,7 +21,7 @@ const api = function (callFunction, param = [], needPay = false) {
     nebPay[way](to, value, callFunction, callArgs, {
       listener: (res) => {
         console.log('listener', res)
-        resolve(res)
+        resolve(JSON.parse(res.result))
       }
     })
   })

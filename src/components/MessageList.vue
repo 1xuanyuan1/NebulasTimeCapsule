@@ -1,42 +1,36 @@
 <template>
-  <div class="container">
-    <card :title="string.nav.query">
-      <loading v-if="isLoading"></loading>
-      <message-list :list="list" v-else></message-list>
-    </card>
+  <div class="list">
+    <div class="item fadeInUp wow" v-for="(item, index) in list" :key="index">
+      <div class="item-head">
+        <div class="item-dot"></div>
+        <div class="item-item">{{getTime(item.timestamp)}}</div>
+      </div>
+      <div class="item-content">
+        <p class="title is-4">{{item.title}}</p>
+        <p class="subtitle is-6">{{item.content}}</p>
+      </div>
+    </div>
+    <div class="list-line fadeInUp wow"></div>
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
-import MessageList from '@/components/MessageList'
+import { dateFormat } from '@/utils'
+import { WOW } from 'wowjs'
 export default {
-  name: 'query',
-  components: {
-    MessageList
-  },
-  computed: {
-    ...mapGetters({
-      string: 'string'
-    })
-  },
-  data () {
-    return {
-      isLoading: false,
-      list: []
+  name: 'message-list',
+  props: {
+    list: {
+      type: Array,
+      default: () => []
     }
   },
   mounted () {
-    this.isLoading = true
-    this.$api.query().then(res => {
-      if (!res) return
-      // 在页面动画切换之后显示
-      setTimeout(() => {
-        this.list = res.reverse()
-        this.$nextTick(() => {
-          this.isLoading = false
-        })
-      }, 300)
-    })
+    new WOW().init()
+  },
+  methods: {
+    getTime (timestamp) {
+      return dateFormat('yyyy-MM-dd hh:mm:ss', new Date(timestamp * 1000))
+    }
   }
 }
 </script>

@@ -29,6 +29,9 @@ html, body {
   margin: 0;
   // font-family: Microsoft Yahei,Helvetica Neue,\\5B8B\4F53,Helvetica,Arial,sans-serif;
 }
+.wow {
+  visibility: hidden;
+}
 /* 可以设置不同的进入和离开动画 */
 /* 设置持续时间和动画函数 */
 [class*='-enter-active'] {

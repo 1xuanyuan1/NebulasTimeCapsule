@@ -25,14 +25,9 @@
 </template>
 
 <script>
-import api from '@/service'
-import { Card } from '@/components/Common'
 import { mapGetters } from 'vuex'
 export default {
   name: 'save',
-  components: {
-    Card
-  },
   computed: {
     ...mapGetters({
       string: 'string'
@@ -44,29 +39,25 @@ export default {
       content: ''
     }
   },
-  created () {
-    // console.log(dappAddress, nebPay)
-    api.query().then(res => {
-      console.log('created', res)
-    })
-    // api.find(res => {
-    //   console.log('created', res)
-    // })
-  },
   methods: {
     toAdd () {
-      api.save({
+      if (this.title.trim() === '') {
+        this.$showAlert({title: `${this.string.save.title}${this.string.input_hint}`, type: 'danger'})
+        return
+      }
+      if (this.content.trim() === '') {
+        this.$showAlert({title: `${this.string.save.content}${this.string.input_hint}`, type: 'danger'})
+        return
+      }
+      this.$api.save({
         title: this.title,
         content: this.content
       }).then(res => {
-        console.log(res)
+        this.$showAlert({title: `${this.string.nav.save}${this.string.success}`, type: 'info'})
+        this.title = ''
+        this.content = ''
       })
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

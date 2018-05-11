@@ -36,7 +36,7 @@ $base-radius: 5px;
 $active-color: #15b6e4;
 $active-color-hover: rgba(21, 182, 228, 0.8);
 .card{
-  margin: $base-padding $base-padding / 2 0;
+  margin: $base-padding $base-padding / 2;
   border-radius: $base-radius;
   .card-header{
     padding: $base-padding 0;

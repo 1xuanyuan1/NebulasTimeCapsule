@@ -29,6 +29,11 @@ export default new Router({
       name: 'Query',
       component: lazyLoading('Home/query')
     },
+    {
+      path: '/find',
+      name: 'Find',
+      component: lazyLoading('Home/find')
+    },
     { path: '*', redirect: '/save' }
   ]
 })

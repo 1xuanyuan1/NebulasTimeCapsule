@@ -5,6 +5,7 @@ export default {
   input_hint: ` can't be empty`,
   success: ' Success',
   fail: ' Fail',
+  nodata: `You haven't buried a time capsule yet!`,
   nav: {
     save: 'Save Time Capsule',
     find: 'Take Time Capsule',

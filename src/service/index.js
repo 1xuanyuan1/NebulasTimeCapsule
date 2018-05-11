@@ -1,6 +1,6 @@
 import NebPay from 'nebpay'
 const nebPay = new NebPay()
-const dappAddress = 'n1r59iG6skRfC32AeMwwVfjS6MGBRPixiby'
+const dappAddress = 'n21nUqpeHXYntDLJsdva2sZe5tD2g5hEWPo'
 
 /**
  *
@@ -21,7 +21,11 @@ const api = function (callFunction, param = [], needPay = false) {
     nebPay[way](to, value, callFunction, callArgs, {
       listener: (res) => {
         console.log('listener', res)
-        resolve(JSON.parse(res.result))
+        try {
+          resolve(JSON.parse(res.result))
+        } catch (e) {
+          reject(res.result)
+        }
       }
     })
   })

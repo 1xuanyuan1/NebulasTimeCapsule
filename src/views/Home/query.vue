@@ -28,7 +28,10 @@ export default {
   mounted () {
     this.isLoading = true
     this.$api.query().then(res => {
-      if (!res) return
+      if (!res) {
+        this.error()
+        return
+      }
       // 在页面动画切换之后显示
       setTimeout(() => {
         this.list = res.reverse()
@@ -36,7 +39,18 @@ export default {
           this.isLoading = false
         })
       }, 300)
+    }).catch(e => {
+      this.error()
     })
+  },
+  methods: {
+    error () {
+      this.isLoading = false
+      this.$showAlert({title: `${this.string.nodata}`, type: 'danger'})
+      setTimeout(() => {
+        this.$router.push('/save')
+      }, 500)
+    }
   }
 }
 </script>

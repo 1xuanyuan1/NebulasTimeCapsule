@@ -35,7 +35,7 @@ html, body {
 /* 可以设置不同的进入和离开动画 */
 /* 设置持续时间和动画函数 */
 [class*='-enter-active'] {
-  transition: all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition: all .5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 [class*='-leave-active'] {
   transition: all .15s cubic-bezier(1.0, 0.5, 0.8, 1.0);

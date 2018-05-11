@@ -59,6 +59,9 @@ export default {
           }
           this.list = res.reverse()
         }, 300)
+      }).catch(e => {
+        this.isLoading = false
+        this.$showAlert({title: `${this.string.find.search_fail}`, type: 'danger'})
       })
     }
   }

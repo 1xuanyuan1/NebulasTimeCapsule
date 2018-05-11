@@ -5,6 +5,7 @@ export default {
   input_hint: `不能为空`,
   success: '成功',
   fail: '失败',
+  nodata: '您还没有埋入一个时间胶囊!',
   nav: {
     save: '埋入时间胶囊',
     find: '挖取时间胶囊',

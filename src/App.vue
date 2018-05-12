@@ -9,14 +9,28 @@
 
 <script>
 import NavBar from '@/components/Navbar'
+import { mapGetters } from 'vuex'
 export default {
   name: 'App',
   components: {
     NavBar
   },
   computed: {
+    ...mapGetters({
+      string: 'string'
+    }),
     key () {
       return this.$route.fullPath
+    }
+  },
+  data () {
+    return {
+      isHasExtension: typeof window.webExtensionWallet === 'undefined'
+    }
+  },
+  mounted () {
+    if (this.isHasExtension) {
+      this.$showAlert({title: `${this.string.noExtension}`, type: 'danger'})
     }
   }
 }

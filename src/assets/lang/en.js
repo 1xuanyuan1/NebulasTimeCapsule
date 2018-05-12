@@ -6,6 +6,7 @@ export default {
   success: ' Success',
   fail: ' Fail',
   nodata: `You haven't buried a time capsule yet!`,
+  noExtension: 'Please install WebExtensionWallet to use Time Capsule',
   nav: {
     save: 'Save Time Capsule',
     find: 'Take Time Capsule',
